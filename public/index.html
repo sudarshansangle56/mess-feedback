@@ -125,32 +125,13 @@
 
         <div class="form-group">
           <label>What problems do you face?</label><br />
-          <input
-            type="checkbox"
-            name="problems"
-            value="Food doesn’t taste good"
-          />
-          Food doesn’t taste good<br />
-          <input type="checkbox" name="problems" value="Same menu every day" />
-          Same menu every day<br />
-          <input
-            type="checkbox"
-            name="problems"
-            value="Can’t choose what I want"
-          />
-          Can’t choose what I want<br />
-          <input type="checkbox" name="problems" value="Not healthy" /> Not
-          healthy/nutritious<br />
-          <input type="checkbox" name="problems" value="Too expensive" /> Too
-          expensive<br />
-          <input type="checkbox" name="problems" value="Not hygienic" /> Not
-          hygienic<br />
-          <input
-            type="checkbox"
-            name="problems"
-            value="Not delivered on time"
-          />
-          Food not delivered on time<br />
+          <input type="checkbox" name="problems" value="Food doesn’t taste good" /> Food doesn’t taste good<br />
+          <input type="checkbox" name="problems" value="Same menu every day" /> Same menu every day<br />
+          <input type="checkbox" name="problems" value="Can’t choose what I want" /> Can’t choose what I want<br />
+          <input type="checkbox" name="problems" value="Not healthy" /> Not healthy/nutritious<br />
+          <input type="checkbox" name="problems" value="Too expensive" /> Too expensive<br />
+          <input type="checkbox" name="problems" value="Not hygienic" /> Not hygienic<br />
+          <input type="checkbox" name="problems" value="Not delivered on time" /> Food not delivered on time<br />
           <input type="checkbox" name="problems" value="Other" /> Other
         </div>
 
@@ -170,8 +151,11 @@
       </form>
     </div>
 
-    <script>
-      const apiURL = "http://localhost:5000/submit";
+    <script type="module">
+      // ✅ Load API URL from environment (Vite or Next.js style)
+      const apiURL =
+        import.meta.env?.VITE_GOOGLE_SHEET_URL ||
+        (typeof process !== "undefined" ? process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL : "");
 
       const form = document.getElementById("feedbackForm");
       const successMsg = document.getElementById("successMsg");
@@ -180,6 +164,8 @@
         e.preventDefault();
         const formData = new FormData(form);
         const data = {};
+
+        // Collect multiple checkbox values correctly
         formData.forEach((value, key) => {
           if (data[key]) {
             data[key] += ", " + value;
