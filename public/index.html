@@ -1,78 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Mess Feedback Form</title>
-</head>
-<body>
-  <h2>Mess Feedback Form</h2>
-  <form id="feedbackForm">
-    <label>Name:</label>
-    <input type="text" name="name" required><br><br>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mess Service Feedback Form</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #74ebd5, #9face6);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .form-container {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        width: 100%;
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+      label {
+        font-weight: 600;
+        margin: 10px 0 5px;
+        display: block;
+        color: #444;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+      }
+      input[type="radio"],
+      input[type="checkbox"] {
+        width: auto;
+        margin-right: 8px;
+      }
+      .form-group {
+        margin-bottom: 18px;
+      }
+      .btn {
+        width: 100%;
+        background: #4a90e2;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+      .btn:hover {
+        background: #357ab8;
+      }
+      .message {
+        text-align: center;
+        margin-top: 20px;
+        color: green;
+        font-weight: bold;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Mess Service Feedback Survey</h2>
+      <form id="feedbackForm">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name" required />
+        </div>
 
-    <label>Age Group:</label>
-    <select name="ageGroup">
-      <option value="18-22">18-22</option>
-      <option value="23-30">23-30</option>
-      <option value="30+">30+</option>
-    </select><br><br>
+        <div class="form-group">
+          <label>Your age group</label>
+          <select name="ageGroup" required>
+            <option value="Under 18">Under 18</option>
+            <option value="18-24">18–24</option>
+            <option value="25-35">25–35</option>
+            <option value="35+">35+</option>
+          </select>
+        </div>
 
-    <label>Role:</label>
-    <input type="text" name="role"><br><br>
+        <div class="form-group">
+          <label>What best describes you?</label>
+          <select name="role" required>
+            <option value="Student">Student</option>
+            <option value="Working professional">Working professional</option>
+            <option value="Both">Both</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
 
-    <label>Using Mess:</label>
-    <select name="usingMess">
-      <option value="Yes">Yes</option>
-      <option value="No">No</option>
-    </select><br><br>
+        <div class="form-group">
+          <label>Do you currently use any mess or tiffin service?</label><br />
+          <input type="radio" name="usingMess" value="Yes" required /> Yes
+          <input type="radio" name="usingMess" value="No" /> No
+        </div>
 
-    <label>Satisfaction:</label>
-    <select name="satisfaction">
-      <option value="Excellent">Excellent</option>
-      <option value="Good">Good</option>
-      <option value="Average">Average</option>
-      <option value="Poor">Poor</option>
-    </select><br><br>
+        <div class="form-group">
+          <label>How satisfied are you with your current service?</label>
+          <select name="satisfaction">
+            <option value="Very Dissatisfied">Very Dissatisfied</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="Satisfied">Satisfied</option>
+          </select>
+        </div>
 
-    <label>Problems:</label>
-    <textarea name="problems"></textarea><br><br>
+        <div class="form-group">
+          <label>What problems do you face?</label><br />
+          <input
+            type="checkbox"
+            name="problems"
+            value="Food doesn’t taste good"
+          />
+          Food doesn’t taste good<br />
+          <input type="checkbox" name="problems" value="Same menu every day" />
+          Same menu every day<br />
+          <input
+            type="checkbox"
+            name="problems"
+            value="Can’t choose what I want"
+          />
+          Can’t choose what I want<br />
+          <input type="checkbox" name="problems" value="Not healthy" /> Not
+          healthy/nutritious<br />
+          <input type="checkbox" name="problems" value="Too expensive" /> Too
+          expensive<br />
+          <input type="checkbox" name="problems" value="Not hygienic" /> Not
+          hygienic<br />
+          <input
+            type="checkbox"
+            name="problems"
+            value="Not delivered on time"
+          />
+          Food not delivered on time<br />
+          <input type="checkbox" name="problems" value="Other" /> Other
+        </div>
 
-    <label>Health Issues:</label>
-    <textarea name="healthIssues"></textarea><br><br>
+        <div class="form-group">
+          <label>Have you experienced any health issues?</label><br />
+          <input type="radio" name="healthIssues" value="Yes" required /> Yes
+          <input type="radio" name="healthIssues" value="No" /> No
+        </div>
 
-    <label>Comments:</label>
-    <textarea name="comments"></textarea><br><br>
+        <div class="form-group">
+          <label>Any other comments</label>
+          <textarea name="comments" rows="3"></textarea>
+        </div>
 
-    <button type="submit">Submit</button>
-  </form>
+        <button type="submit" class="btn">Submit</button>
+        <p class="message" id="successMsg">Your response has been recorded.</p>
+      </form>
+    </div>
 
-  <p id="responseMessage"></p>
+    <script>
+      const apiURL = "https://script.google.com/macros/s/AKfycbz8wlkGlx2XeWTfZ5wXEhRFsO_ePPDrfUtR1fiI90IOLdXbYFN9a-KWSpDy_vM1l3BT/exec";
 
-  <script>
-    document.getElementById("feedbackForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+      const form = document.getElementById("feedbackForm");
+      const successMsg = document.getElementById("successMsg");
 
-      const formData = new FormData(this);
-      const data = {};
-      formData.forEach((value, key) => data[key] = value);
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => {
+          if (data[key]) {
+            data[key] += ", " + value;
+          } else {
+            data[key] = value;
+          }
+        });
 
-      fetch("https://script.google.com/macros/s/AKfycbz8wlkGlx2XeWTfZ5wXEhRFsO_ePPDrfUtR1fiI90IOLdXbYFN9a-KWSpDy_vM1l3BT/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(res => res.text())
-      .then(msg => {
-        document.getElementById("responseMessage").innerText = msg;
-        document.getElementById("feedbackForm").reset();
-      })
-      .catch(err => {
-        document.getElementById("responseMessage").innerText = "Error submitting form.";
-        console.error(err);
+        fetch(apiURL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.text())
+          .then((msg) => {
+            successMsg.innerText = msg;
+            successMsg.style.display = "block";
+            form.reset();
+          })
+          .catch((err) => console.error("Error!", err));
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
