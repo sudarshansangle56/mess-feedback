@@ -125,32 +125,13 @@
 
         <div class="form-group">
           <label>What problems do you face?</label><br />
-          <input
-            type="checkbox"
-            name="problems"
-            value="Food doesn’t taste good"
-          />
-          Food doesn’t taste good<br />
-          <input type="checkbox" name="problems" value="Same menu every day" />
-          Same menu every day<br />
-          <input
-            type="checkbox"
-            name="problems"
-            value="Can’t choose what I want"
-          />
-          Can’t choose what I want<br />
-          <input type="checkbox" name="problems" value="Not healthy" /> Not
-          healthy/nutritious<br />
-          <input type="checkbox" name="problems" value="Too expensive" /> Too
-          expensive<br />
-          <input type="checkbox" name="problems" value="Not hygienic" /> Not
-          hygienic<br />
-          <input
-            type="checkbox"
-            name="problems"
-            value="Not delivered on time"
-          />
-          Food not delivered on time<br />
+          <input type="checkbox" name="problems" value="Food doesn’t taste good" /> Food doesn’t taste good<br />
+          <input type="checkbox" name="problems" value="Same menu every day" /> Same menu every day<br />
+          <input type="checkbox" name="problems" value="Can’t choose what I want" /> Can’t choose what I want<br />
+          <input type="checkbox" name="problems" value="Not healthy" /> Not healthy/nutritious<br />
+          <input type="checkbox" name="problems" value="Too expensive" /> Too expensive<br />
+          <input type="checkbox" name="problems" value="Not hygienic" /> Not hygienic<br />
+          <input type="checkbox" name="problems" value="Not delivered on time" /> Food not delivered on time<br />
           <input type="checkbox" name="problems" value="Other" /> Other
         </div>
 
@@ -190,14 +171,19 @@
 
         fetch(apiURL, {
           method: "POST",
+          mode: "no-cors",   
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
         })
-          .then((res) => res.text())
-          .then((msg) => {
-            successMsg.innerText = msg;
+          .then(() => {
+            successMsg.innerText = "Your response has been recorded.";
             successMsg.style.display = "block";
             form.reset();
+
+            // hide after 5s
+            setTimeout(() => {
+              successMsg.style.display = "none";
+            }, 5000);
           })
           .catch((err) => console.error("Error!", err));
       });
