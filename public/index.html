@@ -151,11 +151,9 @@
       </form>
     </div>
 
-    <script type="module">
-      // ✅ Load API URL from environment (Vite or Next.js style)
+    <script>
       const apiURL =
-        import.meta.env?.VITE_GOOGLE_SHEET_URL ||
-        (typeof process !== "undefined" ? process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL : "");
+        "https://script.google.com/macros/s/AKfycbx26As0I2PWpLJ2MqvSFGAsqVv06r_bLDr-eWAmrpRt_NSvEjABeSk9w6NqUzugjf1q/exec";
 
       const form = document.getElementById("feedbackForm");
       const successMsg = document.getElementById("successMsg");
@@ -165,7 +163,7 @@
         const formData = new FormData(form);
         const data = {};
 
-        // Collect multiple checkbox values correctly
+       
         formData.forEach((value, key) => {
           if (data[key]) {
             data[key] += ", " + value;
