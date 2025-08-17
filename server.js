@@ -7,16 +7,20 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+
 const allowedOrigins = [
   "http://localhost:5500",   
-  "http://localhost:5173"
+  "http://localhost:5173",
+  "https://mess-feedback-scoe.vercel.app"   // 👈 your frontend
 ];
+
 app.use(cors({
   origin: (origin, cb) => {
     if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
     cb(new Error("Not allowed by CORS"));
   }
 }));
+
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
@@ -65,6 +69,6 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-app.listen(PORT, () =>
+app.listen(PORT, "0.0.0.0", () =>
   console.log(`🚀 Server running on http://localhost:${PORT}`)
 );
