@@ -1,21 +1,22 @@
-# Mess-Feedback
-Mess Survey Feedback
+# Mess Service Feedback Form
 
+A simple feedback form built with **HTML, CSS, and JavaScript** that submits responses to **Google Sheets** using Google Apps Script.  
 
+🔗 Live Form (optional): [Mess Feedback](https://mess-feedback-scoe.vercel.app)
 
-create database mess_feedback;
+---
 
-USE mess_feedback;
+## 🚀 Features
+- Clean and responsive feedback form  
+- Submits data directly to Google Sheets  
+- Success message on submission  
+- Hosted easily on Vercel / Netlify / GitHub Pages  
 
-CREATE TABLE feedback (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    ageGroup VARCHAR(50),
-    role VARCHAR(50),
-    usingMess VARCHAR(10),
-    satisfaction VARCHAR(50),
-    problems TEXT,
-    healthIssues VARCHAR(10),
-    comments TEXT,
-    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+---
+
+## 🛠️ Setup Instructions (Local Machine)
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/sudarshansangle56/mess-feedback.git
+cd mess-feedback
